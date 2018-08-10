@@ -1,0 +1,27 @@
+{
+  "name": "library_application",
+  "version": "1.0.0",
+  "description": "single-page client-side Library application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://vmgit.softwerke.local/frontend-practice-2018/klochkov-practice-3.git"
+  },
+  "author": "Artem Klochkov",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "del": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-nunjucks-render": "^2.2.2",
+    "gulp-uglify": "^3.0.1"
+  }
+}
