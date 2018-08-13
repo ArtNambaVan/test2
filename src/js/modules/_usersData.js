@@ -1,7 +1,7 @@
 var usersData = (function() {
 
 
-    var users, user1, user2;
+    var users, user1, user2, user3;
 
     users = [];
     user1 = {
@@ -12,12 +12,19 @@ var usersData = (function() {
     };
     user2 = {
         id       : 2,
-        name     : 'Artem',
-        email    : 'Artem@gmail.com',
-        password : 'artem123'
+        name     : 'User2',
+        email    : 'user2@gmail.com',
+        password : 'User123'
     };
 
-    users.push(user1,user2);
+    user3 = {
+        id       : 3,
+        name     : 'Artem',
+        email    : 'Arthorror@gmail.com',
+        password : 'Anthrax1'
+    };
+
+    users.push(user1,user2, user3);
 
 
     return {

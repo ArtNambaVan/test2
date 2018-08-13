@@ -70,20 +70,9 @@ var booksFormController = (function() {
         html = Mustache.to_html($tmpl);
         $bookForm.html(html).hide().fadeIn(1000);
 
-        $('#pre-selected-options').multiSelect();
-        addListenerOnGenreBtn();
+
     };
 
-    var addListenerOnGenreBtn = function() {
-        var $arrow = $('#book-form').find('.toggle-arrow'),
-            $panel = $('#book-form').find('.ms-container')
-        ;
-        $panel.hide();
-
-        $arrow.on('click', function() {
-            $panel.slideToggle('slow');
-        });
-    };
 
     var removeForm = function() {
         $('#book-form').children().fadeOut(500,function(){
@@ -103,6 +92,7 @@ var booksFormController = (function() {
     var createBook = function() {
         var inputTitle           = bookForm.querySelector('.js-title'),
             inputDescription     = bookForm.querySelector('.js-description'),
+            inputPanel           = bookForm.querySelector('.panel'),
             inputType            = bookForm.querySelectorAll('input[type="radio"]'),
             inputCheckbox        = bookForm.querySelectorAll('.genre-checkbox'),
             genreArr = [],
@@ -146,11 +136,35 @@ var booksFormController = (function() {
             var newItem = booksData.addBookItem(bookItem);
 
             mediator.publish('newBook', newItem);
+            inputTitle.classList.remove('border-success')
+            inputDescription.classList.remove('border-success')
+            inputPanel.classList.remove('border', 'border-danger')
             hideAlert();
+            $('.panel').off();
+            inputTitle.removeEventListener('input', function(){});
+            inputDescription.removeEventListener('input', function(){});
         } else {
             showAlert();
+            validateForm(inputTitle, inputDescription)
+
         }
     };
+
+    var formError = function(inputName) {
+        if (inputName.value === '') {
+            inputName.classList.add('border-danger');
+            inputName.focus();
+        }
+        inputName.addEventListener('input', function() {
+            if (inputName.value === '') {
+            inputName.classList.remove('border-success');
+            inputName.classList.add('border-danger');
+          } else if (inputName.value !== '') {
+            inputName.classList.remove('border-danger');
+            inputName.classList.add('border-success');
+          }
+        });
+    }
 
     var showAlert = function() {
 
@@ -162,6 +176,22 @@ var booksFormController = (function() {
     var hideAlert = function() {
         $('#requireAlert').hide();
     };
+
+    var validateForm = function(title,description) {
+        $('.invalid-feedback').addClass('d-block');
+        $('.panel').on('change', function(){
+            checked = $(".genre-checkbox:checked").length
+            if (checked > 0) {
+                $('.invalid-feedback').removeClass('d-block')
+            } else {
+                $('.invalid-feedback').addClass('d-block')
+            }
+        });
+        formError(description);
+        formError(title);
+
+
+    }
 
     mediator.subscribe('userLogOut', hideAlert);
 
@@ -521,8 +551,9 @@ var userAuthorizationController = (function() {
 
     var showAlert = function(obj) {
 
+        var user = usersData.getCurrentUser()[0] || obj;
         var tmpl = '{{name}}';
-        var html = Mustache.to_html(tmpl, obj);
+        var html = Mustache.to_html(tmpl, user);
 
         $('#user-name').html(html);
         $('#successAlert').show('fade');
@@ -533,6 +564,7 @@ var userAuthorizationController = (function() {
     };
 
     mediator.subscribe('userSession', changeBtn);
+    mediator.subscribe('userSession', showAlert);
 
 })();
 
@@ -540,7 +572,7 @@ var userAuthorizationController = (function() {
 var usersData = (function() {
 
 
-    var users, user1, user2;
+    var users, user1, user2, user3;
 
     users = [];
     user1 = {
@@ -551,12 +583,19 @@ var usersData = (function() {
     };
     user2 = {
         id       : 2,
-        name     : 'Artem',
-        email    : 'Artem@gmail.com',
-        password : 'artem123'
+        name     : 'User2',
+        email    : 'user2@gmail.com',
+        password : 'User123'
     };
 
-    users.push(user1,user2);
+    user3 = {
+        id       : 3,
+        name     : 'Artem',
+        email    : 'Arthorror@gmail.com',
+        password : 'Anthrax1'
+    };
+
+    users.push(user1,user2, user3);
 
 
     return {

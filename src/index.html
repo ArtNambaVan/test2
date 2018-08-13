@@ -9,7 +9,6 @@
      
 
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/multi-select.css" />
     <!-- Latest compiled and minified CSS -->
 
 
@@ -19,7 +18,6 @@
     <script src="js/mustache.js"></script>
 
     <script src="js/jquery-ui.js"></script>
-
 
 
 </head>
@@ -79,7 +77,6 @@
 
     <div class="row mt-4">
     <div class="col text-center bold">Total books: <span class="font-weight-bold js-count">0</span></div>
-
 </div>
 
     <div class="row justify-content-center my-4">
@@ -92,7 +89,7 @@
     All the fields are mandatory
 </div>
 
-    <form id="book-form" class="mb-4" novalidate>
+    <form id="book-form" class="mb-4 needs-validation" novalidate="">
 
 </form>
 
@@ -147,51 +144,76 @@
         <input type="text" class="form-control js-description" id="description" placeholder="Description" required>
     </div>
 
-    <div class="form-group"> <p  class="btn btn-block btn-info toggle-arrow" style="cursor: pointer"> Genre <span>&#709;</span> </p>
+        <div class="rform-group panel">
+            <div class="row">
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Drama" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1">Drama</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Horror" id="customCheck2">
+                      <label class="custom-control-label" for="customCheck2">Horror</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Romance" id="customCheck3">
+                      <label class="custom-control-label" for="customCheck3">Romance</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Travel" id="customCheck4">
+                      <label class="custom-control-label" for="customCheck4">Travel</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Guide" id="customCheck5">
+                      <label class="custom-control-label" for="customCheck5">Guide</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Science" id="customCheck6">
+                      <label class="custom-control-label" for="customCheck6">Science</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Comics" id="customCheck7">
+                      <label class="custom-control-label" for="customCheck7">Comics</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Art" id="customCheck8">
+                      <label class="custom-control-label" for="customCheck8">Art</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Biographies" id="customCheck9">
+                      <label class="custom-control-label" for="customCheck9">Biographies</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Fantasy" id="customCheck10">
+                      <label class="custom-control-label" for="customCheck10">Fantasy</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="Mystery" id="customCheck11">
+                      <label class="custom-control-label" for="customCheck11">Mystery</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input genre-checkbox" value="History" id="customCheck12">
+                      <label class="custom-control-label" for="customCheck12">History</label>
+                    </div>
+                </div>
+            </div>
 
-            <select id='pre-selected-options' multiple='multiple'>
-                  <option value='elem_1'>elem 1</option>
-                  <option value='elem_2'>elem 2</option>
-                  <option value='elem_3'>elem 3</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  <option value='elem_4'>elem 4</option>
-                  ...
-                  <option value='elem_100'>elem 100</option>
-                </select>
+            <div class="row">
+                <div class="col text-center">
+                    <div class="invalid-feedback">
+                          Please choose at least one genre.
+                    </div>
+                    <div class="alert alert-danger collapse" role="alert">
+                        All the fields are mandatory
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
 
 
     <div class="form-group">
@@ -212,12 +234,6 @@
 </script>
 
     
-    <script src="js/jquery.multi-select.js"></script>
-    <script type="text/javascript">
-        $('#pre-selected-options').multiSelect();
-    </script>
       <script src="js/all.js"></script>
-
-
     
 </body>

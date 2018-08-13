@@ -54,8 +54,9 @@ var userAuthorizationController = (function() {
 
     var showAlert = function(obj) {
 
+        var user = usersData.getCurrentUser()[0] || obj;
         var tmpl = '{{name}}';
-        var html = Mustache.to_html(tmpl, obj);
+        var html = Mustache.to_html(tmpl, user);
 
         $('#user-name').html(html);
         $('#successAlert').show('fade');
@@ -66,6 +67,7 @@ var userAuthorizationController = (function() {
     };
 
     mediator.subscribe('userSession', changeBtn);
+    mediator.subscribe('userSession', showAlert);
 
 })();
 
